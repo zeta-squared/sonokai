@@ -75,6 +75,7 @@ function! sonokai#get_palette(style, colors_override) "{{{
           \ 'diff_yellow':['#4e432f',   '54'],
           \ 'fg':         ['#f2f4f5',   '250'],
           \ 'red':        ['#fa4f64',   '203'],
+          \ 'special_red':['#fe9797',   '203'],
           \ 'orange':     ['#f88134',   '215'],
           \ 'yellow':     ['#fdb93a',   '179'],
           \ 'green':      ['#94e93e',   '107'],

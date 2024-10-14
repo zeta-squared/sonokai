@@ -303,6 +303,7 @@ call sonokai#highlight('Underlined', s:palette.none, s:palette.none, 'underline'
 call sonokai#highlight('Fg', s:palette.fg, s:palette.none)
 call sonokai#highlight('Grey', s:palette.grey, s:palette.none)
 call sonokai#highlight('Red', s:palette.red, s:palette.none)
+call sonokai#highlight('SpecRed', s:palette.special_red, s:palette.none)
 call sonokai#highlight('Orange', s:palette.orange, s:palette.none)
 call sonokai#highlight('Yellow', s:palette.yellow, s:palette.none)
 call sonokai#highlight('Green', s:palette.green, s:palette.none)
@@ -522,8 +523,8 @@ highlight! link TSStorageClass Red
 highlight! link TSStorageClassLifetime Red
 highlight! link TSStrike Grey
 highlight! link TSString Red
-highlight! link TSStringEscape Green
-highlight! link TSStringRegex Green
+highlight! link TSStringEscape SpecRed
+highlight! link TSStringRegex SpecRed
 highlight! link TSStringSpecial SpecialChar
 highlight! link TSSymbol Fg
 highlight! link TSTag BlueItalic
