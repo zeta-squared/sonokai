@@ -81,8 +81,8 @@ function! sonokai#get_palette(style, colors_override) "{{{
           \ 'green':      ['#94e93e',   '107'],
           \ 'blue':       ['#4bcdf8',   '110'],
           \ 'purple':     ['#cc79f3',   '176'],
-          \ 'grey':       ['#a9afc8',   '246'],
-          \ 'grey_dim':   ['#5a5e7a',   '240'],
+          \ 'grey':       ['#d2d9fc',   '246'],
+          \ 'grey_dim':   ['#a9afc8',   '240'],
           \ 'none':       ['NONE',      'NONE']
           \ }
   elseif a:style ==# 'shusia'

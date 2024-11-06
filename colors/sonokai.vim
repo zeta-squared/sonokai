@@ -33,7 +33,7 @@ if s:configuration.transparent_background >= 1
   call sonokai#highlight('NormalNC', s:palette.fg, s:palette.none)
   call sonokai#highlight('Terminal', s:palette.fg, s:palette.none)
   if s:configuration.show_eob
-    call sonokai#highlight('EndOfBuffer', s:palette.bg4, s:palette.none)
+    call sonokai#highlight('EndOfBuffer', s:palette.grey, s:palette.none)
   else
     call sonokai#highlight('EndOfBuffer', s:palette.bg0, s:palette.none)
   endif
@@ -49,7 +49,7 @@ else
   endif
   call sonokai#highlight('Terminal', s:palette.fg, s:palette.bg0)
   if s:configuration.show_eob
-    call sonokai#highlight('EndOfBuffer', s:palette.bg4, s:palette.none)
+    call sonokai#highlight('EndOfBuffer', s:palette.grey, s:palette.none)
   else
     call sonokai#highlight('EndOfBuffer', s:palette.bg0, s:palette.none)
   endif
@@ -57,7 +57,7 @@ else
   call sonokai#highlight('ToolbarLine', s:palette.fg, s:palette.bg2)
   call sonokai#highlight('FoldColumn', s:palette.grey_dim, s:palette.none)
 endif
-call sonokai#highlight('SignColumn', s:palette.fg, s:palette.none)
+call sonokai#highlight('SignColumn', s:palette.grey_dim, s:palette.none)
 if has('nvim')
   call sonokai#highlight('IncSearch', s:palette.bg0, s:palette.bg_red)
   call sonokai#highlight('Search', s:palette.bg0, s:palette.bg_green)
@@ -84,7 +84,7 @@ else
   call sonokai#highlight('CursorLine', s:palette.none, s:palette.bg1)
   call sonokai#highlight('CursorColumn', s:palette.none, s:palette.bg1)
 endif
-call sonokai#highlight('LineNr', s:palette.grey_dim, s:palette.none)
+call sonokai#highlight('LineNr', s:palette.grey, s:palette.none)
 if &diff
   call sonokai#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
 else
@@ -290,11 +290,11 @@ call sonokai#highlight('Tag', s:palette.orange, s:palette.none)
 call sonokai#highlight('Delimiter', s:palette.fg, s:palette.none)
 call sonokai#highlight('Todo', s:palette.bg0, s:palette.blue, 'bold')
 if s:configuration.disable_italic_comment
-  call sonokai#highlight('Comment', s:palette.grey, s:palette.none)
-  call sonokai#highlight('SpecialComment', s:palette.grey, s:palette.none)
+  call sonokai#highlight('Comment', s:palette.grey_dim, s:palette.none)
+  call sonokai#highlight('SpecialComment', s:palette.grey_dim, s:palette.none)
 else
-  call sonokai#highlight('Comment', s:palette.grey, s:palette.none, 'italic')
-  call sonokai#highlight('SpecialComment', s:palette.grey, s:palette.none, 'italic')
+  call sonokai#highlight('Comment', s:palette.grey_dim, s:palette.none, 'italic')
+  call sonokai#highlight('SpecialComment', s:palette.grey_dim, s:palette.none, 'italic')
 endif
 call sonokai#highlight('Ignore', s:palette.grey, s:palette.none)
 call sonokai#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
