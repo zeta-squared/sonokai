@@ -303,7 +303,6 @@ call sonokai#highlight('Underlined', s:palette.none, s:palette.none, 'underline'
 call sonokai#highlight('Fg', s:palette.fg, s:palette.none)
 call sonokai#highlight('Grey', s:palette.grey, s:palette.none)
 call sonokai#highlight('Red', s:palette.red, s:palette.none)
-call sonokai#highlight('SpecRed', s:palette.special_red, s:palette.none)
 call sonokai#highlight('Orange', s:palette.orange, s:palette.none)
 call sonokai#highlight('Yellow', s:palette.yellow, s:palette.none)
 call sonokai#highlight('Green', s:palette.green, s:palette.none)
@@ -330,6 +329,13 @@ call sonokai#highlight('YellowSign', s:palette.yellow, s:palette.none)
 call sonokai#highlight('GreenSign', s:palette.green, s:palette.none)
 call sonokai#highlight('BlueSign', s:palette.blue, s:palette.none)
 call sonokai#highlight('PurpleSign', s:palette.purple, s:palette.none)
+if s:configuration.style ==# 'zeta-squared'
+  call sonokai#highlight('TermBlue', s:palette.term4, s:palette.none)
+  call sonokai#highlight('SpecRed', s:palette.special_red, s:palette.none)
+else
+  call sonokai#highlight('TermBlue', s:palette.green, s:palette.none)
+  call sonokai#highlight('SpecRed', s:palette.bg_red, s:palette.none)
+endif
 if s:configuration.diagnostic_text_highlight
   call sonokai#highlight('ErrorText', s:palette.none, s:palette.diff_red, 'undercurl', s:palette.red)
   call sonokai#highlight('WarningText', s:palette.none, s:palette.diff_yellow, 'undercurl', s:palette.yellow)
@@ -429,39 +435,53 @@ let g:sonokai_lsp_kind_color = [
 " Terminal: {{{
 if ((has('termguicolors') && &termguicolors) || has('gui_running')) && !s:configuration.disable_terminal_colors
   " Definition
-  let s:terminal = {
-        \ 'black':           s:palette.black,
-        \ 'red':             s:palette.red,
-        \ 'yellow':          s:palette.yellow,
-        \ 'green':           s:palette.green,
-        \ 'cyan':            s:palette.orange,
-        \ 'blue':            s:palette.blue,
-        \ 'purple':          s:palette.purple,
-        \ 'white':           s:palette.fg,
-        \ 'bright_black':    s:palette.grey,
-        \ }
+  if s:configuration.style ==# 'zeta-squared'
+    let s:terminal = {
+          \ 'term0':           s:palette.term0,
+          \ 'term1':           s:palette.term1,
+          \ 'term2':           s:palette.term2,
+          \ 'term3':           s:palette.term3,
+          \ 'term4':           s:palette.term4,
+          \ 'term5':           s:palette.term5,
+          \ 'term6':           s:palette.term6,
+          \ 'white':           s:palette.fg,
+          \ 'term7':           s:palette.term7,
+          \ }
+  else
+    let s:terminal = {
+          \ 'term0':           s:palette.black,
+          \ 'term1':           s:palette.red,
+          \ 'term2':           s:palette.green,
+          \ 'term3':           s:palette.yellow,
+          \ 'term4':           s:palette.orange,
+          \ 'term5':           s:palette.blue,
+          \ 'term6':           s:palette.purple,
+          \ 'white':           s:palette.fg,
+          \ 'term7':           s:palette.grey,
+          \ }
+  endif
   " Implementation: {{{
   if !has('nvim')
-    let g:terminal_ansi_colors = [s:terminal.black[0], s:terminal.red[0], s:terminal.green[0], s:terminal.yellow[0],
-          \ s:terminal.blue[0], s:terminal.purple[0], s:terminal.cyan[0], s:terminal.white[0], s:terminal.black[0], s:terminal.red[0],
-          \ s:terminal.green[0], s:terminal.yellow[0], s:terminal.blue[0], s:terminal.purple[0], s:terminal.cyan[0], s:terminal.white[0]]
+    let g:terminal_ansi_colors = [s:terminal.term0[0], s:terminal.term1[0], s:terminal.term2[0], s:terminal.term3[0],
+          \ s:terminal.term5[0], s:terminal.term6[0], s:terminal.term4[0], s:terminal.white[0], s:terminal.term0[0], s:terminal.term1[0],
+          \ s:terminal.term2[0], s:terminal.term3[0], s:terminal.term5[0], s:terminal.term6[0], s:terminal.term4[0], s:terminal.white[0]]
   else
-    let g:terminal_color_0 = s:terminal.black[0]
-    let g:terminal_color_1 = s:terminal.red[0]
-    let g:terminal_color_2 = s:terminal.green[0]
-    let g:terminal_color_3 = s:terminal.yellow[0]
-    let g:terminal_color_4 = s:terminal.blue[0]
-    let g:terminal_color_5 = s:terminal.purple[0]
-    let g:terminal_color_6 = s:terminal.cyan[0]
-    let g:terminal_color_7 = s:terminal.white[0]
-    let g:terminal_color_8 = s:terminal.bright_black[0]
-    let g:terminal_color_9 = s:terminal.red[0]
-    let g:terminal_color_10 = s:terminal.green[0]
-    let g:terminal_color_11 = s:terminal.yellow[0]
-    let g:terminal_color_12 = s:terminal.blue[0]
-    let g:terminal_color_13 = s:terminal.purple[0]
-    let g:terminal_color_14 = s:terminal.cyan[0]
-    let g:terminal_color_15 = s:terminal.white[0]
+    let g:terminal_color_0 = s:terminal.term0[0]
+    let g:terminal_color_1 = s:terminal.term1[0]
+    let g:terminal_color_2 = s:terminal.term2[0]
+    let g:terminal_color_3 = s:terminal.term3[0]
+    let g:terminal_color_4 = s:terminal.term4[0]
+    let g:terminal_color_5 = s:terminal.term5[0]
+    let g:terminal_color_6 = s:terminal.term6[0]
+    let g:terminal_color_7 = s:terminal.term7[0]
+    let g:terminal_color_8 = s:terminal.white[0]
+    let g:terminal_color_9 = s:terminal.term1[0]
+    let g:terminal_color_10 = s:terminal.term2[0]
+    let g:terminal_color_11 = s:terminal.term3[0]
+    let g:terminal_color_12 = s:terminal.term4[0]
+    let g:terminal_color_13 = s:terminal.term5[0]
+    let g:terminal_color_14 = s:terminal.term6[0]
+    let g:terminal_color_15 = s:terminal.term7[0]
   endif
   " }}}
 endif
@@ -1667,8 +1687,8 @@ highlight! link OctoBubbleDelimiterGrey Grey
 " syn_end }}}
 " syn_begin: netrw {{{
 " https://www.vim.org/scripts/script.php?script_id=1075
-highlight! link netrwDir Green
-highlight! link netrwClassify Green
+highlight! link netrwDir TermBlue
+highlight! link netrwClassify TermBlue
 highlight! link netrwLink Grey
 highlight! link netrwSymLink Fg
 highlight! link netrwExe Red
